@@ -28,9 +28,23 @@ def recebedorDeNotas (mensagem='digite a nota:',notaMaxima=10):
 def padraoMinimo(textoBase,categorias):
     print(textoBase)
     padrao=[]
-    for i in categorias:
-        padrao.append(recebedorDeNotas(i))
+    for categoria in categorias:
+        padrao.append(recebedorDeNotas(categoria))
     return padrao
 
-print(padraoMinimo(textoBase,categorias))
+#padraoMinimo: responsavel por escrever o texto base é armazenar a nota dada a diferentes categorias de dados, recebe texto base que funciona como um cabeçalho e categorias quê deve ser uma lista que sera iterada afim de que o usuario possa dar a nota como base o item especifico da lista, a função armazena uma nova lista com o nome de padrao que será o retorno dado pela função
+
+
+def testeaprovacao(lista0,lista1):
+    contador=0
+    for item0,item1 in zip(lista0,lista1):
+     if item0>=item1:
+        contador+=1
+    if contador==len(lista0):
+       return True
+    else:
+       return False
+
+#testeaprovacao: essa função verifica se todos os itens da lista 0 são maiores ou iguais ao da lista 1
+
 
