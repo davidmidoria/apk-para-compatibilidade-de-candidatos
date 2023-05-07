@@ -50,8 +50,11 @@ def testeDelista(emTexte,modelo):
    aprovado=[]
    for indice in range(len(emTexte)):
         if testeaprovacao(emTexte[indice][1],modelo)==True:
-            aprovado.append(indice)
+            aprovado.append(emTexte[indice])
    return aprovado
+
+#função testeDeLista essa função faz uma iteração de listas recebida no parametro 'emtexte' e mede se os itens contidos nestas listas são todos maiores ou iguais aos quê estão na lista 'modelo', se todos os itens da lista forem maiores ou iguais a lista que contém a lista testada e devolvida  pela lista 'aprovado' na função return. 
+
       
    
 
