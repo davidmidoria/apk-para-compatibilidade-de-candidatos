@@ -45,6 +45,14 @@ def testeaprovacao(lista0,lista1):
     else:
        return False
 
-#testeaprovacao: essa função verifica se todos os itens da lista 0 são maiores ou iguais ao da lista 1
+#testeaprovacao: essa função verifica se todos os itens da lista 0 são maiores ou iguais ao da lista 
+def testeDelista(emTexte,modelo):
+   aprovado=[]
+   for indice in range(len(emTexte)):
+        if testeaprovacao(emTexte[indice][1],modelo)==True:
+            aprovado.append(indice)
+   return aprovado
+      
+   
 
-
+   
