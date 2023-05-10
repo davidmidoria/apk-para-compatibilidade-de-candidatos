@@ -55,6 +55,12 @@ def testeDelista(emTexte,modelo):
 
 #função testeDeLista essa função faz uma iteração de listas recebida no parametro 'emtexte' e mede se os itens contidos nestas listas são todos maiores ou iguais aos quê estão na lista 'modelo', se todos os itens da lista forem maiores ou iguais a lista que contém a lista testada e devolvida  pela lista 'aprovado' na função return. 
 
+def listaDeaprovado(aprovados):
+   if len(aprovados)>0:
+      print("""os candidatos aptos para a vaga são:""")
+      for i in aprovados:
+         print(f'{} pontuação e:{} ')
+
       
    
 
