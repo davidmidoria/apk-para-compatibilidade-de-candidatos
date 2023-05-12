@@ -1,18 +1,3 @@
-
-candidatos=[["allan harlem",[5,10,8,8]],['michel farias',[10,7,7,8]],['thiago silva',[8,5,4,9]],['gabriel ramos',[2,2,2,1]],['dayane stefani',[10,10,8,9]]]
-#candidatos:responsavel pelo nome é notas dos candidatos, as notas dos candidatos seguem a mesma ordem da quê sera listada na variavel 'categorias'.
-
-categorias=['entrevista:','teste téorico:','teste prático:','avaliação de soft skills:']
-# categorias:Contém todas as categorias que foram usadas como parâmetros para a contratação do candidato
-
-mensagemDeErro="\033[38;2;255;0;0m"+"nota digitada é invalida \n digite uma nota valida:"+"\033[0m"
-#mensagemDeErro: mensagem de erro exibida ao usuario caso ele digite uma nota diferente de 0 a 10.  
-
-textoBase="""filtro de candidatos
-
-descreva com notas entre 0 a 10 o padrão minimo para obtenção da vaga"""
-
-
 def recebedorDeNotas (mensagem='digite a nota:',notaMaxima=10):
     resposta=''
     while type(resposta) !=float or resposta>notaMaxima:
@@ -59,9 +44,80 @@ def listaDeaprovado(aprovados):
    if len(aprovados)>0:
       print("""os candidatos aptos para a vaga são:""")
       for i in aprovados:
-         print(f'{} pontuação e:{} ')
+         print('\nnome:{}\n pontuação:\nentrevista:{} teste téorico:{} teste prático:{} avaliação de soft skills:{}'.format(i[0],i[1][0],i[1][1],i[1][2],i[1][3]))
 
-      
-   
 
-   
+def tramento(notas):
+    listnotas=[]
+    for i in notas:
+        if i.isnumeric():
+            listnotas.append(int(i))
+    return listnotas
+
+
+def cadastro():
+    nome=input('menu de cadastro\ndigite o nome do candidato:')
+    notas=tramento(input('informe as notas do texte no formato "eX_tX_pX_sX" sendo x o valor da nota\ndigite:'))
+    return [nome,notas]
+
+def simOuNao(mensagem):
+
+    resposta=input(mensagem)
+    if resposta=='1':
+        return True
+    if resposta=='0':
+        return False
+    else:
+        print('digite 1 ou 0')
+        return simOuNao()
+
+def menu(texto):
+    print(texto)
+    resposta=input('digite:')
+    if resposta=='0':
+        return False,False,False
+    elif resposta =='1':
+        return True,True,False
+    elif resposta=='2':
+        return True,False,True
+    else:
+        print('digite um número entre um a três')
+        return menu()
+    
+
+
+candidatos=[]
+#candidatos:responsavel pelo nome é notas dos candidatos, as notas dos candidatos seguem a mesma ordem da quê sera listada na variavel 'categorias'.
+
+categorias=['entrevista:','teste téorico:','teste prático:','avaliação de soft skills:']
+# categorias:Contém todas as categorias que foram usadas como parâmetros para a contratação do candidato
+  
+
+textoBase="""filtro de candidatos
+
+descreva com notas entre 0 a 10 o padrão minimo para obtenção da vaga"""
+
+textoMenu=""" 
+cadastro e compatibilidade
+menu inicial
+1-cadastrar funcionarios
+2-verificar compatibilidade
+0-sair
+"""
+
+loop0=True
+while loop0==True:
+    loop0,loop1,loop2=menu(textoMenu)
+
+    while loop1==True:
+        candidatos.append(cadastro())
+        loop1= simOuNao('\n1-novo cadastro\n0-retornar\ndigite:')
+
+    
+    while loop2==True:
+        listaDeaprovado(testeDelista(candidatos,padraoMinimo(textoBase,categorias)))
+        loop2=simOuNao('\n1-nova consulta\n0-retornar\ndigite:')
+
+
+
+
