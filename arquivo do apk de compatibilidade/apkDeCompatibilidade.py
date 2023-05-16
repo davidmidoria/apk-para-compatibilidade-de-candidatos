@@ -48,8 +48,7 @@ def listaDeaprovado(aprovados):
 #inputPadrao: recebe um texto que sera impresso, uma estrutura padrao e um maior número para o retorno, retorna 
 # uma lista com números de ponto flutuante com valor maximo igual ao parametro maior numero
 def inputPadrao(texto,estruturaPadrao,maiorNumero=10):
-    listnotas=[]
-    estrutura=[]
+    estrutura,listnotas=[],[]
     notas=input(texto).strip().lower().replace('_',' ').split()
     for i in notas:
         try:
